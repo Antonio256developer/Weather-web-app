@@ -3,4 +3,5 @@
  
 СТЕК:
 - React 
-- CSS
+- HTML,CSS
+- API Weather
