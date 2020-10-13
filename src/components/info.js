@@ -7,4 +7,4 @@ const Info = props => (
   </div>
 );
 
-export default Info; //экспорт класса info
+export default Info; 
