@@ -7,4 +7,4 @@ const Form = props => (
   </form>
 );
 
-export default Form; //экспорт класса info
+export default Form; 
