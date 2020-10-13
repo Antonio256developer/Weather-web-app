@@ -2,7 +2,7 @@ import React from "react";
 
 const Weather = props => (
   <div className="infoWeath">
-    { props.city &&    //если равно тру то отображаем данные на страничке
+    { props.city &&    
       <div>
         <p>Местоположение: {props.city}, {props.country}</p>
         <p>Температура: {props.temp}</p>
@@ -14,4 +14,4 @@ const Weather = props => (
     </div>
 );
 
-export default Weather; //экспорт класса info
+export default Weather; 
