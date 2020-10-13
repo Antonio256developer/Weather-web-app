@@ -1,14 +1,14 @@
-import React from "react";    //добавляем объект реакт из библиотеки ракт файл packagejson
+import React from "react";    
 import Info from "./components/info";
 import Form from "./components/form";
 import Weather from "./components/Weather";
 
-const API_KEY = "1e423cb69125688961af910a378d1c00"; //ключ API из сайта openweathermap
+const API_KEY = "1e423cb69125688961af910a378d1c00"; 
 
-class App extends React.Component {   //создание компонента, extends - это унаследует из др класса
+class App extends React.Component {   
 
-  state = {    //получение данных о погоде
-    temp: undefined,  //температура
+  state = {    
+    temp: undefined,  
     city: undefined,
     country: undefined,
     pressure: undefined,
@@ -17,22 +17,22 @@ class App extends React.Component {   //создание компонента, e
   }
 
   gettingWeather = async (e) => {
-   e.preventDefault();   //остановка перезагрузки странички
-   var city = e.target.elements.city.value; //переменная ввода города
+   e.preventDefault();   
+   var city = e.target.elements.city.value; 
 
 
-   if(city) {    //проверка написано ли чтонибудь в ячейке город
+   if(city) {    
     const api_url = await
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`); //прочитать url адрес и получить все данные с этой странички
-    const data = await api_url.json();  //преображение инфы в json формат
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`); 
+    const data = await api_url.json();  
 
     var sunset = data.sys.sunset;
     var date = new Date();
-    date.setTime(sunset);  //отслеживание даты
-    var sunset_date = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();  //перевод в нормальное время
-
-    this.setState({   //установка значений о погоде
-      temp: data.main.temp,  //смотрим значение в консоли браузера
+    date.setTime(sunset);  
+    var sunset_date = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();  
+     
+    this.setState({   
+      temp: data.main.temp,  
       city: data.name,
       country: data.sys.country,
       pressure: data.main.pressure,
@@ -40,8 +40,8 @@ class App extends React.Component {   //создание компонента, e
       error: undefined
     });
   } else {
-    this.setState({   //установка значений о погоде
-      temp: undefined,  //температура
+    this.setState({   
+      temp: undefined,  
       city: undefined,
       country: undefined,
       pressure: undefined,
@@ -51,7 +51,7 @@ class App extends React.Component {   //создание компонента, e
   }
 }
 
-  render() {  //вывод информации (объединение всей информации)
+  render() {  
     return (
       <div className="wrapper">
        <div className="main">
@@ -62,7 +62,7 @@ class App extends React.Component {   //создание компонента, e
            </div>
            <div className="col-sm-7 form">
              <Form weatherMethod={this.gettingWeather} />
-             <Weather                                  //передача инфы о погоде в weather.js
+             <Weather                                  
                temp={this.state.temp}
                city={this.state.city}
                country={this.state.country}
@@ -79,4 +79,4 @@ class App extends React.Component {   //создание компонента, e
   }
 }
 
-export default App; //экспорт класса app
+export default App; 
